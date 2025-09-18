@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Para Mi Princesa 💖</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Comic Sans MS', cursive;
+    }
+
+    /* Fondo degradado animado */
+    body {
+      background: linear-gradient(270deg, #ffb6c1, #ffc0cb, #ffe4e1, #fff0f5);
+      background-size: 800% 800%;
+      animation: gradient 12s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes gradient {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* Corazones flotando */
+    .heart {
+      position: fixed;
+      bottom: -50px;
+      color: #ff69b4;
+      font-size: 20px;
+      animation: floatUp 8s linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% {transform: translateY(0) scale(1);}
+      100% {transform: translateY(-110vh) scale(1.5);}
+    }
+
+    /* Regalo animado */
+    #gift {
+      width: 150px;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+      z-index: 2;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    /* Contenido que aparece al abrir el regalo */
+    #content {
+      display: none;
+      text-align: center;
+      animation: fadeIn 2s forwards;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    #content img {
+      width: 250px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    #message {
+      max-width: 450px;
+      background: rgba(255,255,255,0.85);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      font-size: 18px;
+      white-space: pre-line;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Regalo inicial -->
+  <div id="gift-container">
+    <img id="gift" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Gift_Flat_Icon.svg/1024px-Gift_Flat_Icon.svg.png" alt="Regalo" />
+  </div>
+
+  <!-- Contenido que se muestra al abrir -->
+  <div id="content">
+    <img src="TU-FOTO-AQUI.jpg" alt="Nosotros">
+    <div id="message">
+hoy te mando este mensaje tan bonito para ti mi prencesa hermosa y te digo lo mucho que te amo y todo lo que haria por ti 💖
+
+aveces nos enojamos y se que es dificil pero asi te quiero mucho y aun que aveces no puedas regalarme tu tiempo y ponerme atecion es dificil pero lo soporto por ti 💌
+
+y se que llegaran momento donde me pongas toda la atencion que necesite pero el tiempo que sacas para hablar conmigo para mi es suficiente y amo esa accion tuya 💗
+
+con mucho amor, tu mapache empalagoso 🦝💕
+    </div>
+  </div>
+
+  <!-- Script para regalo y corazones -->
+  <script>
+    const gift = document.getElementById('gift');
+    const content = document.getElementById('content');
+    const giftContainer = document.getElementById('gift-container');
+
+    gift.addEventListener('click', () => {
+      giftContainer.style.display = 'none';
+      content.style.display = 'block';
+    });
+
+    // Crear corazones flotando constantemente
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+      heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }, 500);
+  </script>
+</body>
+</html>
